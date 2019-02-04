@@ -16,6 +16,12 @@ namespace Hirame.Localizer
         // Add support for localized sprites.
         //private static Dictionary<string, Sprite> LocalizedSprites = new Dictionary<string, Sprite> ();
 
+        public const string DefaultLangKey = "en_US";
+        
+        public static string CurrentLanguageKey { get; private set; } = "None";
+
+        private static bool LocalizationLoaded;
+        
         public static string GetLocalizedString (string key)
         {
             if (LocalizedString.TryGetValue (key, out var value))
@@ -23,13 +29,28 @@ namespace Hirame.Localizer
             return $"Missing Localization: {key}.";
         }
 
+        public static bool TryGetLocalizedString (string key, out string result)
+        {
+            if (!LocalizationLoaded)
+                LoadLocalizationForLanguage (DefaultLangKey);
+            
+            return LocalizedString.TryGetValue (key, out result);
+        }
+
         public static void LoadLocalizationForLanguage (string langKey)
         {
+            // TODO:
+            // Most of this method could be moved to its own thread?
+            
+            if (CurrentLanguageKey.Equals (langKey))
+                return;
+
+            LocalizationLoaded = true;
             LocalizedString.Clear ();
 
             var timer = new Stopwatch ();           
             timer.Start ();
-
+            CurrentLanguageKey = langKey;
             
             var path = Path.Combine (Application.streamingAssetsPath, "Localization");
             Debug.Log (path);
@@ -59,6 +80,9 @@ namespace Hirame.Localizer
 
         }
         
+        #if UNITY_EDITOR
+        [UnityEditor.InitializeOnLoadMethod]
+        #endif
         [RuntimeInitializeOnLoadMethod (RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Initialize ()
         {

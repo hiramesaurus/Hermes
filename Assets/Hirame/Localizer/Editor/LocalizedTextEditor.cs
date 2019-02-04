@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class LocalizedTextEditor : MonoBehaviour
+namespace Hirame.Localizer.Editor
 {
-    // Start is called before the first frame update
-    void Start()
+    [CustomEditor(typeof(LocalizedText))]
+    public class LocalizedTextEditor : UnityEditor.Editor
     {
-        
+        public override void OnInspectorGUI ()
+        {
+            EditorGUILayout.TextField ("Language Key", Localization.CurrentLanguageKey, EditorStyles.label);
+            DrawPropertiesExcluding (serializedObject, "m_Script");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

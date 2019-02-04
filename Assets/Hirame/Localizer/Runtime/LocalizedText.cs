@@ -2,9 +2,10 @@
 using TMPro;
 using UnityEngine;
 
+[ExecuteAlways]
 public class LocalizedText : MonoBehaviour
 {
-    public string LocalizationKey;
+    public LocalizationReference LocalizationKey;
     public TMP_Text Text;
     
     private void OnEnable ()
@@ -25,7 +26,7 @@ public class LocalizedText : MonoBehaviour
 
     private void UpdateLocalization ()
     {
-        Text.text = Localization.GetLocalizedString (LocalizationKey);
+        Text.text = Localization.GetLocalizedString (LocalizationKey.ReferenceKey);
     }
 
     private void Reset ()
