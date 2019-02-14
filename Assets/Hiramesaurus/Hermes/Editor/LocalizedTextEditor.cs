@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Hirame.Localizer.Editor
+namespace Hiramesaurus.Hermes.Localization.Editor
 {
     [CustomEditor(typeof(LocalizedText))]
     public class LocalizedTextEditor : UnityEditor.Editor

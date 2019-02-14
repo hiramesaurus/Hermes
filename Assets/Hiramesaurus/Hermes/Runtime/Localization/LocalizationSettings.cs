@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Hirame.Localizer
+namespace Hiramesaurus.Hermes.Localization
 {
     public class LocalizationSettings : ScriptableObject
     {

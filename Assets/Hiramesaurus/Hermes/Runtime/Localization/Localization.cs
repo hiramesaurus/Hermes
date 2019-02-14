@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Hirame.Localizer
+namespace Hiramesaurus.Hermes.Localization
 {
     public static class Localization
     {
@@ -64,8 +64,18 @@ namespace Hirame.Localizer
                 return;
             }
 
-            var files = Directory.GetFiles (langDir, "*.txt");
+            ProcessTextAsset (langDir);
+            ProcessJsonAssets (langDir);
+           
+            
+            timer.Stop ();
+            Debug.Log ($"Loaded localization in {timer.ElapsedMilliseconds.ToString ()}ms.");
 
+        }
+
+        private static void ProcessTextAsset (string langDir)
+        {
+            var files = Directory.GetFiles (langDir, "*.txt");
             foreach (var f in files)
             {
                 var length = Path.GetFileName (f).Length - 4;
@@ -74,9 +84,11 @@ namespace Hirame.Localizer
                 var content = File.ReadAllText (f);
                 LocalizedString.Add (key, content);
             }
-            
-            timer.Stop ();
-            Debug.Log ($"Loaded localization in {timer.ElapsedMilliseconds.ToString ()}ms.");
+        }
+
+        private static void ProcessJsonAssets (string langDir)
+        {
+            var jsonStrings = Directory.GetFiles (langDir, ".json");
 
         }
         

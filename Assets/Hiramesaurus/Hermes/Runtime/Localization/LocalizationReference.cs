@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hirame.Localizer
+namespace Hiramesaurus.Hermes
 {
-    [CreateAssetMenu (menuName = "Hirame/Localizer/Localization Reference")]
+    [CreateAssetMenu (menuName = "Hiramesaurus/Hermes/Localization Reference")]
     public class LocalizationReference : ScriptableObject
     {
         public string LanguageKey;

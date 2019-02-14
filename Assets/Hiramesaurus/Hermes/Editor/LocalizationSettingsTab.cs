@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Hirame.Localizer.Editor
+namespace Hiramesaurus.Hermes.Localization.Editor
 {
     
     public static class LocalizationSettingsTab

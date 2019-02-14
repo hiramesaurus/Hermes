@@ -1,7 +1,8 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
-namespace Hirame.Localizer.Editor
+namespace Hiramesaurus.Hermes.Localization.Editor
 {
     [CustomEditor (typeof (LocalizationReference))]
     public class LocalizationReferenceEditor : UnityEditor.Editor
