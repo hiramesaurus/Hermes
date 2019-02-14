@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Hiramesaurus.Hermes.Dialog
 {
@@ -34,6 +33,12 @@ namespace Hiramesaurus.Hermes.Dialog
             return true;
         }
 
+        public class DialogBranch : ScriptableObject
+        {
+            public string Name;
+            public LocalizationReference Content;
+            public DialogBranch[] Branches;      
+        }
     }
 
 }

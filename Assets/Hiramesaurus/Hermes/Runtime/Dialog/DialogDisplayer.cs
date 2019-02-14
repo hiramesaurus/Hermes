@@ -21,9 +21,6 @@ namespace Hiramesaurus.Hermes.Dialog
         
         public void ShowNext ()
         {
-            //Debug.Log (TargetTextArea.LocalizationKey?.name);
-
-            var prev = TargetTextArea.LocalizationKey;
             var isNext = Dialog.TryGetNextDialog (TargetTextArea.LocalizationKey, out var next);
             if (isNext)
                 TargetTextArea.SetContentFromLocalization (next);
